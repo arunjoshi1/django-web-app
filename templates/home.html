@@ -1,0 +1,48 @@
+{% extends 'index.html'%}
+{% block content%}
+    {% for message in messages %}
+       <div style="text-align: center;background: #006600;font-size: 20px">
+        {{ message }}
+       </div>
+    {% endfor %}
+ {% for post in posts %}
+         	<article class="brick entry format-standard animate-this">
+               <div class="entry-text"   style="background: url('{{ post.featured_image.url }}')">
+               	<div class="entry-header">
+					<h1 class="entry-title" ><a href="{% url 'post' post.id %}">{{post.title}}</a></h1>
+               	</div>
+						<div class="entry-excerpt">
+							{{post.slice_body }}
+                        </div>
+				{% if user == post.user %}
+				   <div class="main-navigation sf-menu " >
+				 <a  href="{% url 'edit-post' post.id %}" style="color:black">edit</a> <a href="{% url 'delete' post.id %}" style="color:black">delete</a>
+				  </div>
+                   {% endif %}
+               <p style="float:right ;color: black;">
+                   Posted By:{{ post.user }}
+               </p>
+               </div>
+        		</article> <!-- end article -->
+			 {% endfor %}
+{% endblock %}
+{% block footer %}
+<div class="pagination">
+
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ posts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">next</a>
+            <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

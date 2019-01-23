@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% block content %}
+    {% for post in data %}
+        {% if post.user == user %}
+        <article class="brick entry format-standard animate-this">
+
+               <div class="entry-text"  style="background: url('{{ post.featured_image.url }}')">
+               	<div class="entry-header">
+					<h1 class="entry-title"><a href="{% url 'post' post.id %}">{{post.title}}</a></h1>
+               	</div>
+						<div class="entry-excerpt">
+							{{post.slice_body }}
+                        </div>
+				   <div class="main-navigation sf-menu " >
+				 <a  href="{% url 'edit-post' post.id %}" style="color:black">edit</a> <a href="{% url 'delete' post.id %}" style="color:black">delete</a>
+				  </div>
+                    <p style="float:right ;color: #bba31b;">
+                   Posted By:{{ post.user }}
+                 </p>
+               </div>
+
+        		</article>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

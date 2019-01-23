@@ -1,0 +1,12 @@
+{% extends 'user_base.html' %}
+{% block content %}
+ <div class="register-login">
+     <form method="post">
+         {{form}}
+         {% csrf_token %}
+         <br>
+         <button type="submit">Submit</button>
+     </form>
+
+ </div>
+{% endblock %}
