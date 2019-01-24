@@ -32,7 +32,7 @@ def contact(request):
 
 def edit_post(request,id):
     instance=Post.objects.get(id=id)
-    if request.method=='POST':
+    if request.method=='POST' :
         form=Post_form(request.POST,request.FILES,instance=instance)
         if form.is_valid():
             form.save()

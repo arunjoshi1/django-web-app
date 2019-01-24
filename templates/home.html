@@ -6,24 +6,29 @@
        </div>
     {% endfor %}
  {% for post in posts %}
+
          	<article class="brick entry format-standard animate-this">
+
                <div class="entry-text"   style="background: url('{{ post.featured_image.url }}')">
+                <div class="op entry-text" style="background: rgba(162,171,163,0.73);">
                	<div class="entry-header">
-					<h1 class="entry-title" ><a href="{% url 'post' post.id %}">{{post.title}}</a></h1>
+					<h1 class="entry-title" style="color: whitesmoke;" ><a href="{% url 'post' post.id %}" style="color: whitesmoke;" >{{post.title}}</a></h1>
                	</div>
-						<div class="entry-excerpt">
+						<div class="entry-excerpt" style="color: whitesmoke;">
 							{{post.slice_body }}
                         </div>
 				{% if user == post.user %}
 				   <div class="main-navigation sf-menu " >
-				 <a  href="{% url 'edit-post' post.id %}" style="color:black">edit</a> <a href="{% url 'delete' post.id %}" style="color:black">delete</a>
+				 <a  href="{% url 'edit-post' post.id %}" style="color:whitesmoke">edit</a> <a href="{% url 'delete' post.id %}" style="color:whitesmoke">delete</a>
 				  </div>
                    {% endif %}
-               <p style="float:right ;color: black;">
+               <p style="float:right ;color: whitesmoke;">
                    Posted By:{{ post.user }}
                </p>
                </div>
-        		</article> <!-- end article -->
+                    </div>
+        		</article>
+     <!-- end article -->
 			 {% endfor %}
 {% endblock %}
 {% block footer %}

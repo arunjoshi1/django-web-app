@@ -1,5 +1,6 @@
 {% extends 'index.html' %}
 {% block content %}
+   <div style="margin: 0 10%">
     <h1>{{ post.title }}</h1>
     <p>{{ post.body }}
         {% if user == post.user %}
@@ -7,4 +8,5 @@
     {% endif %}
     </p>
     <h1 style="text-align:right;margin-right: 10%">Posted By:{{ post.user }}</h1>
+   </div>
 {% endblock %}
