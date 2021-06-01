@@ -43,7 +43,7 @@ six==1.11.0
 style==1.1.0
 texttable==0.9.1
 update==0.0.1
-urllib3==1.22
+urllib3==1.26.5
 virtualenv==15.2.0
 websocket-client==0.44.0
 whitenoise==3.3.1
